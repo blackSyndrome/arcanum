@@ -1,3 +1,12 @@
+"use client";
+
+import LogoutButton from "@/components/authentication/LogoutButton";
+
 export default function Dashboard() {
-  <h1>Dashboard</h1>
+   return (
+      <div>
+         <h1>HEllo!</h1>
+         <LogoutButton />
+      </div>
+   );
 }

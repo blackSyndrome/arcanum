@@ -7,8 +7,8 @@ import {
    CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import GoogleSinginButton from "@/components/authentication/GoogleSigninButton";
 
-// test
 export default function Home() {
    return (
       // Root div
@@ -41,7 +41,7 @@ export default function Home() {
                      <Image
                         src="/neu-logo.png"
                         alt="New Era University Logo"
-                        layout="fill" 
+                        layout="fill"
                         objectFit="contain"
                      />
                   </div>
@@ -50,7 +50,7 @@ export default function Home() {
                <Image
                   src="/hero.jpg"
                   alt="New Era University"
-                  className="rounded-md object-cover w-full h-full"
+                  className="object-cover w-full h-full"
                   layout="fill"
                />
                <div className="relative z-20 mt-auto text-white">
@@ -83,9 +83,7 @@ export default function Home() {
                   </CardDescription>
                </CardHeader>
                <CardContent className="space-y-4">
-                  <Button variant="default" className="w-full">
-                     Sign in with my institutional email
-                  </Button>
+                  <GoogleSinginButton />
                   <Button variant="outline" className="w-full">
                      Continue as guest
                   </Button>
