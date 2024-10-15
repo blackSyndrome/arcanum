@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+# Welcome to the Project! 👋
+
+Hey team! Before we start working on this project, follow these steps to set things up on your machine.
 
 ## Getting Started
 
-First, run the development server:
+1. **Clone the repository:**
+   ```bash
+   git clone git@github.com:romnoelp/Library-Management.git
+   ```
+
+2. **Navigate into the project folder:**
+   ```bash
+   cd ~/.Library-Management
+   ```
+
+3. **Install all the dependencies:**
+   ```bash
+   npm install
+   ```
+
+4. **Test if the project is working:**
+   ```bash
+   npm run dev
+   ```
+   
+5. **Open your browser and go to:**
+   ```
+   http://localhost:3000
+   ```
+
+If everything is running smoothly, you are good to go! 🎉
+
+## Branching and Workflow
+
+When you are assigned a new task or want to create a new feature, always create a new branch. Here's the complete workflow:
+
+### 1. Create a new branch
+
+Make sure you are on the main branch before creating a new branch:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git checkout main
+git pull origin main
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Create a new branch:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+git checkout -b <feature-branch-name>
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 2. Work on the new branch
 
-## Learn More
+Now you're ready to start coding! After making your changes, stage and commit them:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+git add .
+git commit -m "Describe your changes"
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 3. Push your branch to GitHub
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Once you've committed your changes, push your branch:
 
-## Deploy on Vercel
+```bash
+git push origin <feature-branch-name>
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 4. Open a Pull Request
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Go to the GitHub repository page. Open a Pull Request from your feature branch into main. Wait for approval and any necessary code reviews.
+
+### 5. Merge the Pull Request
+
+Once the PR is approved, merge your changes into the main branch through GitHub.
+
+### 6. Clean up branches
+
+After merging, you can delete the feature branch both locally and on GitHub:
+
+**Locally:**
+```bash
+git branch -d <feature-branch-name>
+```
+
+**On GitHub:**
+```bash
+git push origin --delete <feature-branch-name>
+```
+
+### 7. Pulling all the recent changes
+
+Ensuring everything works fine, you should pull all the recent changes from the main repository BEFORE DOING SOMETHING ELSE AGAIN:
+
+```bash
+git pull
+```
