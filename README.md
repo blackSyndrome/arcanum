@@ -80,6 +80,12 @@ Once the PR is approved, merge your changes into the main branch through GitHub.
 
 After merging, you can delete the feature branch both locally and on GitHub:
 
+Checkout on your local main branch:
+```bash
+git checkout main
+git pull
+```
+
 **Locally:**
 ```bash
 git branch -d <feature-branch-name>
