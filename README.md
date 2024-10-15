@@ -7,12 +7,12 @@ Hey team! Before we start working on this project, follow these steps to set thi
 
 1. **Clone the repository:**
    ```bash
-   git clone git@github.com:romnoelp/Library-Management.git
+   git clone https://github.com/blackSyndrome/arcanum.git
    ```
 
 2. **Navigate into the project folder:**
    ```bash
-   cd ~/.Library-Management
+   cd arcanum
    ```
 
 3. **Install all the dependencies:**
