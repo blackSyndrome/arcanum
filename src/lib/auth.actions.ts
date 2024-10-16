@@ -1,16 +1,48 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient } from "../../utils/supabase/server";
 
-export async function signInWithGoogle(redirectUrl: string) {
-   const supabase = createClient();
+const supabase = createClient();
 
-   const { data, error } = await supabase.auth.signInWithOAuth({
+// Post Auth (if successful), this will run
+export async function handleOAuthCallback() {
+   const { data: sessionData, error: sessionError } =
+      await supabase.auth.getSession();
+
+   if (sessionError || !sessionData?.session?.user) {
+      console.error("Session retrieval error:", sessionError);
+      redirect("/error");
+      return;
+   }
+
+   const user = sessionData.session.user;
+
+   const { data: userInfo, error: roleError } = await supabase
+      .from("User")
+      .select("type")
+      .eq("uuid", user.id)
+      .single();
+
+   if (roleError) {
+      console.error("Role fetch error:", roleError);
+      redirect("/error");
+      return;
+   }
+
+   if (userInfo?.type === "admin") {
+      redirect("/dashboard");
+   } else {
+      redirect("/dashboard");
+   }
+}
+
+// Google OAuth
+export async function signInWithGoogle(redirectUrl: string) {
+   const { data, error: authError } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-         redirectTo: redirectUrl, // Use the passed redirect URL
+         redirectTo: redirectUrl,
          queryParams: {
             access_type: "offline",
             prompt: "consent",
@@ -18,72 +50,24 @@ export async function signInWithGoogle(redirectUrl: string) {
       },
    });
 
-   if (error) {
-      console.log(error);
+   if (authError) {
+      console.error("Sign-in error:", authError);
       redirect("/error");
+      return;
    }
 
-   // Redirect the user to the Google OAuth URL
-   redirect(data.url);
+   redirect(data.url); 
 }
 
-export async function login(formData: FormData) {
-   const supabase = createClient();
-
-   // type-casting here for convenience
-   // in practice, you should validate your inputs
-
-   const data = {
-      email: formData.get("email") as string,
-      password: formData.get("password") as string,
-   };
-
-   const { error } = await supabase.auth.signInWithPassword(data);
-
-   if (error) {
-      redirect("/error");
-   }
-
-   revalidatePath("/", "layout");
-   redirect("/");
-}
-
-export async function signup(formData: FormData) {
-   const supabase = createClient();
-
-   // type-casting here for convenience
-   // in practice, you should validate your inputs
-   const firstName = formData.get("first-name") as string;
-   const lastName = formData.get("last-name") as string;
-   const data = {
-      email: formData.get("email") as string,
-      password: formData.get("password") as string,
-      options: {
-         data: {
-            full_name: `${firstName + " " + lastName}`,
-            email: formData.get("email") as string,
-         },
-      },
-   };
-
-   const { error } = await supabase.auth.signUp(data);
-
-   if (error) {
-      redirect("/error");
-   }
-
-   revalidatePath("/", "layout");
-   redirect("/");
-}
-
+// Signout 
 export async function signout() {
-   const supabase = createClient();
    const { error } = await supabase.auth.signOut();
+
    if (error) {
-      console.log(error);
+      console.error("Sign-out error:", error);
       redirect("/error");
+      return;
    }
 
    redirect("/logout");
 }
-
