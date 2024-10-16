@@ -30,6 +30,7 @@ export async function handleOAuthCallback() {
       return;
    }
 
+   // Change when we have role-based login feature already
    if (userInfo?.type === "admin") {
       redirect("/dashboard");
    } else {
