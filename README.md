@@ -74,7 +74,7 @@ Go to the GitHub repository page. Open a Pull Request from your feature branch i
 
 ### 5. Merge the Pull Request
 
-Once the PR is approved, merge your changes into the main branch through GitHub.
+Once the PR is approved, you'll see the comment/s for approval or something that needs to be changed or updated.
 
 ### 6. Clean up branches
 
