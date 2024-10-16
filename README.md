@@ -48,7 +48,7 @@ git pull origin main
 Create a new branch:
 
 ```bash
-git checkout -b <feature-branch-name>
+git checkout -b <task-number-feature-name>
 ```
 
 ### 2. Work on the new branch
