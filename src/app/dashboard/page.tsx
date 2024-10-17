@@ -1,31 +1,25 @@
 "use client";
 
-import LogoutButton from "@/components/authentication/LogoutButton";
 import {
-   NavigationMenu,
-   NavigationMenuContent,
-   NavigationMenuIndicator,
-   NavigationMenuItem,
-   NavigationMenuLink,
-   NavigationMenuList,
-   NavigationMenuTrigger,
-   NavigationMenuViewport,
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 
 const Dashboard = () => {
-   return (
-      <div>
-         <NavigationMenu>
-            <NavigationMenuList>
-               <NavigationMenuItem>
-                  <NavigationMenuLink href="/dashboard">
-                     Dashboard
-                  </NavigationMenuLink>
-               </NavigationMenuItem>
-            </NavigationMenuList>
-         </NavigationMenu>
-      </div>
-   );
+  console.log();
+  return (
+    <div>
+      <NavigationMenu>
+        <NavigationMenuList>
+          <NavigationMenuItem>
+            <NavigationMenuLink href="/dashboard">Dashboard</NavigationMenuLink>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
+    </div>
+  );
 };
 
 export default Dashboard;
