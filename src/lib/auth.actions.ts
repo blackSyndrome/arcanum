@@ -6,7 +6,7 @@ import { createClient } from "../../utils/supabase/server";
 const supabase = createClient();
 
 // Post Auth (if successful), this will run
-export async function handleOAuthCallback() {
+const handleOAuthCallback = async () => {
    const { data: sessionData, error: sessionError } =
       await supabase.auth.getSession();
 
@@ -36,10 +36,10 @@ export async function handleOAuthCallback() {
    } else {
       redirect("/dashboard");
    }
-}
+};
 
 // Google OAuth
-export async function signInWithGoogle(redirectUrl: string) {
+const signInWithGoogle = async (redirectUrl: string) => {
    const { data, error: authError } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
@@ -57,11 +57,11 @@ export async function signInWithGoogle(redirectUrl: string) {
       return;
    }
 
-   redirect(data.url); 
-}
+   redirect(data.url);
+};
 
 // Signout 
-export async function signout() {
+const signout = async () => {
    const { error } = await supabase.auth.signOut();
 
    if (error) {
@@ -71,4 +71,7 @@ export async function signout() {
    }
 
    redirect("/logout");
-}
+};
+
+
+export { handleOAuthCallback, signInWithGoogle, signout };

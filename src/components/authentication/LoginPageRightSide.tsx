@@ -1,3 +1,5 @@
+"us client";
+
 import {
    Card,
    CardContent,
@@ -7,23 +9,30 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import GoogleSigninButton from "@/components/authentication/GoogleSigninButton";
+import { signInWithGoogle } from "@/lib/auth.actions";
 
-export default function LoginPageRightSide() {
+
+const LoginPageRightSide = () => {
    return (
-      <div className="w-full md:w-1/3 h-full flex flex-col items-center justify-center p-4 md:p-8">
-         <h1 className="text-3xl md:text-4xl font-semibold">arcanum</h1>
-         <p className="text-sm md:text-base text-muted-foreground mb-4 text-center">
+      <div className="w-1/3 h-full flex flex-col items-center justify-center">
+         <h1 className="text-4xl font-semibold">arcanum</h1>
+         <p className="text-base text-muted-foreground mb-4">
             Powered by New Era Main Library
          </p>
-         <Card className="w-full max-w-md px-4 md:px-6 shadow-md rounded-lg">
+         <Card className="w-full max-w-md px-2 shadow-md rounded-lg">
             <CardHeader>
-               <CardTitle className="text-lg md:text-xl">Welcome!</CardTitle>
-               <CardDescription className="text-sm md:text-base">
+               <CardTitle className="text-xl">Welcome!</CardTitle>
+               <CardDescription className="text-base">
                   Are you from within New Era University?
                </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-               <GoogleSigninButton />
+               <GoogleSigninButton
+                  label="Sign in with my institutional email"
+                  onClick={() => {
+                     signInWithGoogle(`${window.location.origin}/dashboard`);
+                  }}
+               />
                <Button variant="outline" className="w-full">
                   Continue as guest
                </Button>
@@ -31,4 +40,6 @@ export default function LoginPageRightSide() {
          </Card>
       </div>
    );
-}
+};
+
+export default LoginPageRightSide;

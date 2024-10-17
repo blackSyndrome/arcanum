@@ -1,12 +1,31 @@
 "use client";
 
 import LogoutButton from "@/components/authentication/LogoutButton";
+import {
+   NavigationMenu,
+   NavigationMenuContent,
+   NavigationMenuIndicator,
+   NavigationMenuItem,
+   NavigationMenuLink,
+   NavigationMenuList,
+   NavigationMenuTrigger,
+   NavigationMenuViewport,
+} from "@/components/ui/navigation-menu";
 
-export default function Dashboard() {
+const Dashboard = () => {
    return (
       <div>
-         <h1>HEllo!</h1>
-         <LogoutButton />
+         <NavigationMenu>
+            <NavigationMenuList>
+               <NavigationMenuItem>
+                  <NavigationMenuLink href="/dashboard">
+                     Dashboard
+                  </NavigationMenuLink>
+               </NavigationMenuItem>
+            </NavigationMenuList>
+         </NavigationMenu>
       </div>
    );
-}
+};
+
+export default Dashboard;

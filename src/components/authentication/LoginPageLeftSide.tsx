@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function LoginPageLeftSide() {
+const LoginPageLeftSide = () => {
    return (
       <div className="w-full md:w-2/3 h-full flex items-center justify-center relative">
          <div className="relative w-full h-full flex flex-col p-4 md:p-8">
@@ -57,5 +57,7 @@ export default function LoginPageLeftSide() {
          </div>
       </div>
    );
-}
+};
+
+export default LoginPageLeftSide;
    
