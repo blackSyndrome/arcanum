@@ -1,20 +1,22 @@
 "use client";
 
-import { signInWithGoogle } from "@/lib/auth.actions";
-import { Button } from "../ui/button";
+import { Button, ButtonProps } from "../ui/button";
+import React from "react";
 
-export default function GoogleSinginButton() {
+type GoogleSigninButtonProp = ButtonProps & {
+   label: string; 
+};
+
+const GoogleSigninButton: React.FC<GoogleSigninButtonProp> = (props) => {
+   const { label, ...buttonProps } = props;
+
    return (
       <div>
-         <Button
-            variant="default"
-            className="w-full"
-            onClick={() => {
-               signInWithGoogle(`${window.location.origin}/dashboard`);
-            }}
-         >
-            Sign in with my institutional email
+         <Button {...buttonProps} variant="default" className="w-full">
+            {label}
          </Button>
       </div>
    );
-}
+};
+
+export default GoogleSigninButton;
