@@ -1,24 +1,24 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+//import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
-import { signout } from "@/lib/auth.actions";
+//import { signout } from "@/lib/signOut";
 
 const LogoutButton = () => {
-   const router = useRouter();
-   return (
-      <div>
-         <Button
-            variant="default"
-            className="w-full"
-            onClick={() => {
-               signout();
-            }}
-         >
-            Logout
-         </Button>
-      </div>
-   );
+  //const router = useRouter();
+  return (
+    <div>
+      <Button
+        variant="default"
+        className="w-full"
+        onClick={() => {
+          //signout();
+        }}
+      >
+        Logout
+      </Button>
+    </div>
+  );
 };
 
 export default LogoutButton;
