@@ -1,23 +1,11 @@
 "use client";
 
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-} from "@/components/ui/navigation-menu";
+import NavigationBar from "@/components/dashboard/NavigationBar";
 
 const Dashboard = () => {
-  console.log();
   return (
     <div>
-      <NavigationMenu>
-        <NavigationMenuList>
-          <NavigationMenuItem>
-            <NavigationMenuLink href="/dashboard">Dashboard</NavigationMenuLink>
-          </NavigationMenuItem>
-        </NavigationMenuList>
-      </NavigationMenu>
+      <NavigationBar />
     </div>
   );
 };
