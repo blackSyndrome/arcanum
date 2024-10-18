@@ -15,7 +15,6 @@ export async function GET(request: Request) {
    if (code) {
       const supabase = createClient();
       const { error } = await supabase.auth.exchangeCodeForSession(code);
-      console.log(error);
 
       if (!error) {
          const forwardedHost = request.headers.get("x-forwarded-host"); // original origin before load balancer
