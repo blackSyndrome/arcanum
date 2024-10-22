@@ -16,7 +16,7 @@ import Link from "next/link";
 
 const NavigationBar = () => {
    const supabase = createClient();
-   const [user, setUser] = useState<any>(); 
+   const [user, setUser] = useState<any>();
 
    useEffect(() => {
       const fetchUser = async () => {
@@ -141,10 +141,7 @@ const NavigationBar = () => {
 
             <Avatar>
                {user?.user_metadata?.avatar_url ? (
-                  <AvatarImage
-                     src={user.user_metadata.avatar_url}
-                     alt={user.user_metadata.name}
-                  />
+                  <AvatarImage src={user.user_metadata.avatar_url} />
                ) : (
                   <AvatarFallback>BS</AvatarFallback>
                )}
