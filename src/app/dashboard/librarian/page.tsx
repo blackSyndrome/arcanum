@@ -1,9 +1,9 @@
 import React from 'react'
 
-const LibrarianDashboard = () => {
+const Librarian = () => {
   return (
-    <div>LibrarianDashboard</div>
+    <div>Librarian</div>
   )
 }
 
-export default LibrarianDashboard
+export default Librarian
