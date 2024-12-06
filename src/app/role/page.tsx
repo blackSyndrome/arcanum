@@ -12,7 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { handleCreateIdentification } from "@/database-methods/crud-identification/handleCreateIdentification";
-import { useRouter } from "next/router";
+import { useRouter } from 'next/navigation';
 
 const Role = () => {
   const [selectedRole, setSelectedRole] = useState<
