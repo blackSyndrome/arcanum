@@ -11,6 +11,8 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { handleCreateIdentification } from "@/database-methods/crud-identification/handleCreateIdentification";
+import { useRouter } from "next/router";
 
 const Role = () => {
   const [selectedRole, setSelectedRole] = useState<
@@ -19,6 +21,7 @@ const Role = () => {
   const [showFileInput, setShowFileInput] = useState(false);
   const [fading, setFading] = useState(false);
   const [file, setFile] = useState<File | null>(null);
+  const router = useRouter();
 
   const handleClick = (role: "student" | "librarian") => {
     if (selectedRole === role) return;
@@ -59,7 +62,7 @@ const Role = () => {
         className={`w-[600px] ${selectedRole ? "animate-expand" : "h-[200px]"}`}
       >
         <CardHeader>
-          <CardTitle>What's your role within the university?</CardTitle>
+          <CardTitle>What&apos;s your role within the university?</CardTitle>
           <CardDescription>Choose between the options.</CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col items-center gap-6">
@@ -103,6 +106,20 @@ const Role = () => {
               className={`transition-opacity duration-300 ${
                 file ? "opacity-100" : "opacity-50"
               }`}
+              onClick={async () => {
+                if (file && file.name && selectedRole) {
+                  const { status, error } = await handleCreateIdentification(
+                    file.name,
+                    selectedRole
+                  );
+
+                  if (status === 201) {
+                    router.push("/dashboard/guest"); // TODO: Mount useRouter()
+                  }
+                  console.log("status is nigga", status);
+                  console.log("error found", error);
+                }
+              }}
             >
               Continue
             </Button>
