@@ -12,7 +12,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { handleCreateIdentification } from "@/database-methods/crud-identification/handleCreateIdentification";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
+import { handleUploadIdentficationRegistration } from "@/database-methods/crud-identification/handleUploadIdentificationRegistration";
 
 const Role = () => {
   const [selectedRole, setSelectedRole] = useState<
@@ -107,17 +108,37 @@ const Role = () => {
                 file ? "opacity-100" : "opacity-50"
               }`}
               onClick={async () => {
-                if (file && file.name && selectedRole) {
-                  const { status, error } = await handleCreateIdentification(
-                    file.name,
-                    selectedRole
-                  );
+                if (!file || !file.name || !selectedRole) {
+                  console.log("Missing file or selected role"); //TODO: Display
+                  return;
+                }
 
-                  if (status === 201) {
-                    router.push("/dashboard/guest"); // TODO: Mount useRouter()
+                try {
+                  // TODO: Display user-friendly message for errors
+                  const { error: createError } =
+                    await handleCreateIdentification(file.name, selectedRole);
+
+                  if (createError) {
+                    console.log("Error creating identification:", createError);
+                    return;
                   }
-                  console.log("status is nigga", status);
-                  console.log("error found", error);
+
+                  const { data, error: uploadError } =
+                    await handleUploadIdentficationRegistration(
+                      file.name,
+                      file
+                    );
+
+                  if (uploadError) {
+                    console.log("Error uploading image:", uploadError);
+                    return;
+                  }
+
+                  if (data) {
+                    router.push("/dashboard/guest");
+                  }
+                } catch (error) {
+                  console.log(error);
                 }
               }}
             >
