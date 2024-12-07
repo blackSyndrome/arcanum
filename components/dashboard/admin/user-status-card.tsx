@@ -32,7 +32,7 @@ const UserStatusCard = (props: UserStatusCardProps) => {
           <CardDescription className="text-sm truncate w-1/3 mx-4">
             {props.email}
           </CardDescription>
-          <Button variant="default">Proof of Registration</Button>
+          <Button variant="outline">Proof of Registration</Button>
         </div>
 
         <div
@@ -47,7 +47,7 @@ const UserStatusCard = (props: UserStatusCardProps) => {
           <Button variant="default" className="w-[48%]">
             Accept
           </Button>
-          <Button variant="default" className="w-[48%]">
+          <Button variant="destructive" className="w-[48%]">
             Block
           </Button>
         </div>
