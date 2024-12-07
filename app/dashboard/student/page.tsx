@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "../../../components/ui/card";
-import LiteratureCard from "../../../components/dashboard/student/card";
+import LiteratureCard from "../../../components/dashboard/student/literature-card";
 import { ScrollArea } from "../../../components/ui/scroll-area";
 
 const literatureData = [
