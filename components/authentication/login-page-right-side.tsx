@@ -9,7 +9,7 @@ import {
 } from "../ui/card";
 import { Button } from "../ui/button";
 import GoogleSigninButton from "./google-signin-button";
-import { signInWithGoogle } from "../../lib/signInWithGoogle";
+import { signInWithGoogle } from "../../lib/signin-with-google";
 
 const LoginPageRightSide = () => {
   return (

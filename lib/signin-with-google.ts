@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { createClient } from "../../utils/supabase/client";
+import { createClient } from "../utils/supabase/client";
 
 export const signInWithGoogle = async () => {
   const supabase = createClient();

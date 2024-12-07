@@ -7,10 +7,6 @@ export async function GET(request: Request) {
   const code = searchParams.get("code");
   const next = searchParams.get("next") ?? "/role"; // Redirect after successful login
 
-  console.log("origin", origin);
-  console.log("next", next);
-  console.log("User is logging in");
-
   if (code) {
     const supabase = createClient();
     const { error } = await supabase.auth.exchangeCodeForSession(code);
