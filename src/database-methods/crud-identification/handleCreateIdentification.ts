@@ -24,6 +24,7 @@ export const handleCreateIdentification = async (
         image_name: imageName,
         proposed_role: role,
       });
+
     return { status, error };
   }
 };
