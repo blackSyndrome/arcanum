@@ -7,8 +7,11 @@ import {
   CardTitle,
 } from "../../components/ui/card";
 import { ScrollArea } from "../../components/ui/scroll-area";
+import { createClient } from "../../../utils/supabase/server";
 
 const Admin = () => {
+  
+
   return (
     <div className="flex w-full h-screen p-4 gap-4 overflow-hidden">
       <Card className="w-full h-full flex flex-col">
