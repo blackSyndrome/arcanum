@@ -1,6 +1,6 @@
 "use client";
 
-import DashboardBody from "../../components/dashboard/DashboardBody";
+import DashboardBody from "../../../components/dashboard/dashboard-body";
 
 const Dashboard = () => {
   return (

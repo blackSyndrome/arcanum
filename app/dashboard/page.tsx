@@ -5,7 +5,7 @@ import {
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-} from "../components/ui/navigation-menu";
+} from "../../components/ui/navigation-menu";
 
 const Dashboard = () => {
   console.log();

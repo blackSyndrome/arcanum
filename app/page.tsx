@@ -1,7 +1,7 @@
 "use client";
 
-import LoginPageLeftSide from "./components/authentication/login-page-left-side";
-import LoginPageRightSide from "./components/authentication/login-page-right-side";
+import LoginPageLeftSide from "../components/authentication/login-page-left-side";
+import LoginPageRightSide from "../components/authentication/login-page-right-side";
 
 const Home = () => {
   return (

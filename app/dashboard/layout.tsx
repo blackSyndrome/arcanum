@@ -1,7 +1,6 @@
-import DashboardFooter from "../components/dashboard/Footer";
-import Footer from "../components/dashboard/Footer";
-import NavigationBar from "../components/dashboard/NavigationBar";
-import { Input } from "../components/ui/input";
+import DashboardFooter from "../../components/dashboard/Footer";
+import NavigationBar from "../../components/dashboard/navigation-bar";
+import { Input } from "../../components/ui/input";
 import React from "react";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
