@@ -11,9 +11,9 @@ import {
 } from "../../components/ui/card";
 import { Input } from "../../components/ui/input";
 import { Label } from "../../components/ui/label";
-import { handleCreateIdentification } from "../../database-methods/crud-identification/handleCreateIdentification";
+import { handleCreateIdentification } from "../../database-methods/crud-identification/handle-create-indentification";
 import { useRouter } from "next/navigation";
-import { handleUploadIdentficationRegistration } from "../../database-methods/crud-identification/handleUploadIdentificationRegistration";
+import { handleUploadIdentficationRegistration } from "../../database-methods/crud-identification/handle-create-identification";
 import { handleUserStatus } from "../../database-methods/user-status/handleUserStatus";
 
 const Role = () => {
