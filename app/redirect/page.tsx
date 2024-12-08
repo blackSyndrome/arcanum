@@ -1,9 +1,29 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Skeleton } from "../../components/ui/skeleton";
+import { handleUserStatus } from "../../database-methods/user-status/handleUserStatus";
+import { useRouter } from "next/navigation";
 
 const RedirectPageSkeleton = () => {
+  const [nextRoute, setNextRoute] = useState("");
+  const router = useRouter();
+  useEffect(() => {
+    console.log("run");
+    const fetchUserData = async () => {
+      const next = await handleUserStatus();
+      setNextRoute(next);
+    };
+
+    fetchUserData();
+  }, []);
+
+  useEffect(() => {
+    if (nextRoute.trim()) {
+      router.push(nextRoute);
+    }
+  }, [nextRoute, router]);
+
   return (
     <div className="flex flex-col min-h-screen  overflow-hidden">
       <div className=" w-full flex items-center h-16 px-12 py-4">
