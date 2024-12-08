@@ -14,12 +14,12 @@ const Admin = () => {
   const users = [
     {
       id: 1,
-      name: "Rommoniga",
+      name: "Romnoel Edralin Petracorta",
       email: "romnoel.petracorta@neu.edu.ph",
     },
     {
       id: 2,
-      name: "Titsy Die",
+      name: "Richmon Baltazar",
       email: "richmond.baltazar@neu.edu.ph",
     },
     {
