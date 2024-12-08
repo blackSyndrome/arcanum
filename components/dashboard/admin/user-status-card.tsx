@@ -122,9 +122,9 @@ const UserStatusCard = (props: UserStatusCardProps) => {
             </DialogTrigger>
             <DialogContent className="sm:max-w-[800px] lg:max-w-[1000px] flex flex-col p-4">
               <DialogHeader>
-                <DialogTitle>Proof of Registration</DialogTitle>
+                <DialogTitle>File Name</DialogTitle>
                 <DialogDescription>
-                  This is the proof of registration for the user.
+                  User's proof of registration.
                 </DialogDescription>
               </DialogHeader>
               <div className="flex flex-1 items-center justify-center mt-4">
@@ -133,7 +133,7 @@ const UserStatusCard = (props: UserStatusCardProps) => {
                     <Skeleton className="absolute inset-0 w-full h-full" />
                   )}
                   <Image
-                    src="https://images.unsplash.com/photo-1588345921523-c2dcdb7f1dcd?w=800&dpr=2&q=80"
+                    src="https://static.wikia.nocookie.net/shipoffools/images/a/ab/Dreamybull.jpg/revision/latest/scale-to-width-down/1000?cb=20231123085934"
                     alt="Proof of Registration"
                     fill
                     style={{ objectFit: "cover" }}
