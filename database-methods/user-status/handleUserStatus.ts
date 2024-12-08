@@ -16,6 +16,21 @@ export const handleUserStatus = async () => {
     return "/error";
   }
 
+  const { data: userRegistration, error: getRegistrationError } = await supabase
+    .schema("public")
+    .from("identification")
+    .select("id")
+    .eq("id,", userUID);
+
+  if (getRegistrationError) {
+    console.log("Error getting identification:", getRegistrationError);
+    return "/error";
+  }
+
+  if (!userRegistration.length) {
+    return "/role";
+  }
+
   console.log("userData", userData);
 
   if (!userData?.length) {
@@ -34,20 +49,20 @@ export const handleUserStatus = async () => {
     }
 
     console.log("New user created successfully");
-    return "/role/guest"; // Redirect to the guest role
+    return "/role"; // Redirect to the guest role
   }
 
   // If user exists, check if verified
   if (userData[0].verified) {
     switch (userData[0].role) {
       case "student":
-        return "/role/student";
+        return "/dashboard/student";
       case "librarian":
-        return "/role/librarian";
+        return "/dashboard/librarian";
       default:
-        return "/role/guest"; // If the role is unexpected, redirect to guest
+        return "/dashboard/guest"; // If the role is unexpected, redirect to guest
     }
   } else {
-    return "/role/guest"; // If not verified, redirect to guest
+    return "/dashboard/guest"; // If not verified, redirect to guest
   }
 };

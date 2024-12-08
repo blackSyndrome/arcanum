@@ -5,7 +5,7 @@ import { createClient } from "../../../../utils/supabase/server";
 export async function GET(request: Request) {
   const { searchParams, origin } = new URL(request.url);
   const code = searchParams.get("code");
-  const next = searchParams.get("next") ?? "/role"; // Redirect after successful login
+  const next = searchParams.get("next") ?? "/redirect"; // Redirect after successful login
 
   if (code) {
     const supabase = createClient();
@@ -22,6 +22,8 @@ export async function GET(request: Request) {
         return NextResponse.redirect(`${origin}${next}`);
       }
     }
+  } else {
+    return NextResponse.redirect(`${origin}/`);
   }
 
   return NextResponse.redirect(`${origin}/error`);

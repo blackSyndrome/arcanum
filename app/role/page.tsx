@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button } from "../../components/ui/button";
 import {
   Card,
@@ -14,7 +14,6 @@ import { Label } from "../../components/ui/label";
 import { handleCreateIdentification } from "../../database-methods/crud-identification/handle-create-indentification";
 import { useRouter } from "next/navigation";
 import { handleUploadIdentficationRegistration } from "../../database-methods/crud-identification/handle-create-identification";
-import { handleUserStatus } from "../../database-methods/user-status/handleUserStatus";
 
 const Role = () => {
   const [selectedRole, setSelectedRole] = useState<
@@ -58,11 +57,6 @@ const Role = () => {
     }
   };
 
-  useEffect(() => {
-    const fetchUserStatus = async () => await handleUserStatus();
-    console.log("run");
-    fetchUserStatus();
-  }, []);
   return (
     <div className="flex items-center justify-center h-screen">
       <Card
