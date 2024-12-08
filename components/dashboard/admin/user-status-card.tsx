@@ -27,7 +27,7 @@ type UserStatusCardProps = {
 
 const UserStatusCard = (props: UserStatusCardProps) => {
   const supabase = createClient();
-  const [user, setUser] = useState<any>();
+  const [user, setUser] = useState<any>(); //use the UserRegistration type
   const [isHovered, setIsHovered] = useState(false);
   const [isImageLoading, setIsImageLoading] = useState(true);
 
@@ -124,7 +124,7 @@ const UserStatusCard = (props: UserStatusCardProps) => {
               <DialogHeader>
                 <DialogTitle>File Name</DialogTitle>
                 <DialogDescription>
-                  User's proof of registration.
+                  User&apos;s proof of registration.
                 </DialogDescription>
               </DialogHeader>
               <div className="flex flex-1 items-center justify-center mt-4">
