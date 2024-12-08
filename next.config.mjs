@@ -11,7 +11,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "static.wikia.nocookie.net", 
+        hostname: "static.wikia.nocookie.net",
         port: "",
         pathname: "/**",
       },

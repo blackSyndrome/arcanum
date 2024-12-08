@@ -3,7 +3,7 @@ import { createClient } from "../../utils/supabase/client";
 export const handleUserStatus = async () => {
   const supabase = createClient();
   const userUID = (await supabase.auth.getUser()).data.user?.id;
-
+  console.log(userUID);
   // Fetch existing user data from the `user_status` table
   const { data: userData, error: getUserError } = await supabase
     .schema("public")
@@ -27,10 +27,6 @@ export const handleUserStatus = async () => {
     return "/error";
   }
 
-  if (!userRegistration.length) {
-    return "/role";
-  }
-
   console.log("userData", userData);
 
   if (!userData?.length) {
@@ -49,7 +45,11 @@ export const handleUserStatus = async () => {
     }
 
     console.log("New user created successfully");
-    return "/role"; // Redirect to the guest role
+    return "/role";
+  }
+
+  if (!userRegistration.length) {
+    return "/role";
   }
 
   // If user exists, check if verified
