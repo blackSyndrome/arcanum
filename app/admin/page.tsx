@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect } from "react";
 import {
   Card,
   CardContent,
@@ -7,11 +9,12 @@ import {
   CardTitle,
 } from "../../components/ui/card";
 import { ScrollArea } from "../../components/ui/scroll-area";
-import UserStatusCard from "../../components/dashboard/admin/user-status-card";
+// import UserStatusCard from "../../components/dashboard/admin/user-status-card";
 import { Button } from "../../components/ui/button";
+import { handleFetchIdentification } from "../../database-methods/crud-identification/handle-fetch-identification";
 
 const Admin = () => {
-  const users = [
+  /*  const users = [
     {
       id: 1,
       name: "Romnoel Edralin Petracorta",
@@ -88,7 +91,12 @@ const Admin = () => {
       email: "kevin.lisboa@neu.edu.ph",
     },
   ];
+ */
+  useEffect(() => {
+    const fetchIdentifications = async () => await handleFetchIdentification();
 
+    fetchIdentifications();
+  });
   return (
     <div className="flex w-full h-screen p-4 gap-4 overflow-hidden">
       <Card className="w-full h-full flex flex-col">
@@ -114,13 +122,13 @@ const Admin = () => {
               </CardHeader>
               <CardContent className="flex-1 h-full overflow-hidden">
                 <ScrollArea className="h-full">
-                  {users.map((student) => (
+                  {/* {users.map((student) => (
                     <UserStatusCard
                       key={student.id}
                       name={student.name}
                       email={student.email}
                     />
-                  ))}
+                  ))} */}
                 </ScrollArea>
               </CardContent>
             </Card>
@@ -135,13 +143,13 @@ const Admin = () => {
               </CardHeader>
               <CardContent className="flex-1 h-full overflow-hidden">
                 <ScrollArea className="h-full">
-                  {users.map((librarian) => (
+                  {/*   {users.map((librarian) => (
                     <UserStatusCard
                       key={librarian.id}
                       name={librarian.name}
                       email={librarian.email}
                     />
-                  ))}
+                  ))} */}
                 </ScrollArea>
               </CardContent>
             </Card>
