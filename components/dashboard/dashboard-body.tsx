@@ -6,51 +6,14 @@ import NewsGrid from "../cardview/news-grid";
 const DashboardBody = () => {
   return (
     <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        height: "246vh",
-        backgroundColor: "#F8FAFC",
-      }}
+      className="flex flex-col items-center bg-[#F8FAFC] py-10 px-4"
+      style={{ minHeight: "246vh" }}
     >
-      <div
-        className="w-full flex flex-col items-center gap-4"
-        style={{ backgroundColor: "#334155", height: "300px" }}
-      >
-        <Input
-          type="search"
-          placeholder="Search for authors, theses, and periodicals"
-          style={{
-            height: "76px",
-            width: "74%",
-            padding: "20px",
-            borderRadius: "6px",
-            border: "none",
-            boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
-            fontSize: "16px",
-            backgroundColor: "#f8f9fa",
-            marginTop: "90px",
-          }}
-        />
-      </div>
-
-      <div
-        style={{
-          textAlign: "center",
-          marginTop: "50px",
-          color: "black",
-          padding: "0 300px",
-        }}
-      >
-        <h2
-          className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-3xl"
-          style={{ color: "#27374D" }}
-        >
-          {" "}
-          Explore Learning Virtually{" "}
+      <div className="text-center mb-10 max-w-5xl">
+        <h2 className="text-4xl font-extrabold text-[#27374D] mb-4">
+          Explore Learning Virtually
         </h2>
-        <p className="leading-7 mt-6">
+        <p className="leading-7">
           Arcanum serves as a comprehensive learning resource for students. It
           encompasses a wide range of digital offerings, including e-books,
           audiobooks, research materials, and educational websites. This
@@ -60,86 +23,43 @@ const DashboardBody = () => {
         </p>
       </div>
 
-      <div>
+      <div className="w-full mb-12">
         <CardView />
       </div>
 
-      <div
-        className="text-center mt-12"
-        style={{ color: "black", padding: "0 300px" }}
-      >
-        <h2
-          className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-3xl"
-          style={{ color: "#27374D" }}
-        >
-          News and Events{" "}
-        </h2>
+      <div className="text-center mb-8 max-w-5xl">
+        <h2 className="text-4xl font-extrabold text-[#27374D]">News and Events</h2>
       </div>
 
-      <div
-        className="flex justify-center gap-4 p-2 w-full items-stretch"
-        style={{ marginTop: "40px" }}
-      >
-        <div
-          className="w-2/5 flex justify-center"
-          style={{ maxWidth: "600px", flex: "1 1 50%" }}
-        >
+      <div className="flex flex-wrap justify-center gap-8 w-full max-w-7xl">
+        <div className="w-full md:w-1/2 lg:w-2/5 max-w-[600px]">
           <Image
             src="/news-and-events-image.jpg"
             alt="Library Image"
             width={680}
             height={600}
-            className="rounded-lg object-cover"
-            style={{ marginRight: "65px", height: "100%", width: "100%" }}
+            className="rounded-lg object-cover w-full h-full"
           />
         </div>
-        <div
-          className="w-2/5 flex justify-center"
-          style={{ maxWidth: "600px", flex: "1 1 50%" }}
-        >
+        <div className="w-full md:w-1/2 lg:w-2/5 max-w-[600px]">
           <NewsGrid />
         </div>
       </div>
 
-      <div
-        className="flex justify-center gap-4 p-2 w-full items-stretch"
-        style={{ marginTop: "40px" }}
-      >
-        <div
-          className="w-2/5 flex justify-center"
-          style={{
-            maxWidth: "600px",
-            flex: "1 1 50%",
-            marginRight: "65px",
-            height: "100%",
-            width: "100%",
-          }}
-        >
+      <div className="flex flex-wrap justify-center gap-8 w-full max-w-7xl mt-8">
+        <div className="w-full md:w-1/2 lg:w-2/5 max-w-[600px]">
           <NewsGrid />
         </div>
-        <div
-          className="w-2/5 flex justify-center"
-          style={{ maxWidth: "600px", flex: "1 1 50%" }}
-        >
+        <div className="w-full md:w-1/2 lg:w-2/5 max-w-[600px]">
           <Image
             src="/news-and-events-image.jpg"
             alt="Library Image"
             width={680}
             height={600}
-            className="rounded-lg object-cover"
-            style={{ marginRight: "65px" }}
+            className="rounded-lg object-cover w-full h-full"
           />
         </div>
       </div>
-
-      <div
-        className="w-full flex flex-col items-center gap-4"
-        style={{
-          backgroundColor: "#334155",
-          height: "300px",
-          marginTop: "50px",
-        }}
-      />
     </div>
   );
 };
