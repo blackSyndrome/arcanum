@@ -12,15 +12,7 @@ import { ScrollArea } from "../../components/ui/scroll-area";
 import UserStatusCard from "../../components/dashboard/admin/user-status-card"; // Uncomment this
 import { Button } from "../../components/ui/button";
 import { handleFetchIdentification } from "../../database-methods/crud-identification/handle-fetch-identification";
-
-export type UserRegistration = {
-  id: string;
-  role: string;
-  verified: boolean;
-  submitted_at: Date;
-  image_name: string;
-  proposed_role: string;
-};
+import { UserRegistration } from "../../types/user-registration";
 
 const Admin = () => {
   const [students, setStudents] = useState<UserRegistration[]>([]);
