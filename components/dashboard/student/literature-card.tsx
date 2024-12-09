@@ -16,7 +16,6 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  DialogClose,
 } from "../../ui/dialog";
 import { LiteratureCardProps } from "../../../types/literature-card";
 
@@ -75,6 +74,7 @@ const LiteratureCard = ({
             </DialogContent>
           </Dialog>
           <Button variant="default" className="w-[48%]">
+            {/* On click, the show the pdf of the whole document.*/}
             Full text
           </Button>
         </div>
