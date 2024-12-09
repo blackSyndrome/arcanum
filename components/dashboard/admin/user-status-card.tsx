@@ -108,7 +108,14 @@ const UserStatusCard = ({ user }: UserStatusCardProps) => {
                   {isImageLoading && (
                     <Skeleton className="absolute inset-0 w-full h-full" />
                   )}
-                  {/* Place image here <Image /> */}
+                  <Image
+                    src={`${user.image_name}`}
+                    alt="Proof of Registration"
+                    fill
+                    style={{ objectFit: "cover" }}
+                    className="rounded-md"
+                    onLoadingComplete={handleImageLoad}
+                  />
                 </div>
               </div>
             </DialogContent>
