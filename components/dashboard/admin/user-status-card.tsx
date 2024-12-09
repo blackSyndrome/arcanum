@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Card,
   CardContent,
@@ -18,35 +18,15 @@ import {
 import Image from "next/image";
 import { Skeleton } from "../../../components/ui/skeleton";
 import { Avatar, AvatarImage } from "../../../components/ui/avatar";
-import { createClient } from "../../../utils/supabase/client";
+import { UserRegistration } from "../../../types/user-registration";
 
 type UserStatusCardProps = {
-  name: string;
-  email: string;
+  user: UserRegistration;
 };
 
-const UserStatusCard = (props: UserStatusCardProps) => {
-  const supabase = createClient();
-  const [user, setUser] = useState<any>(); //use the UserRegistration type
+const UserStatusCard = ({ user }: UserStatusCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isImageLoading, setIsImageLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      const {
-        data: { user },
-        error,
-      } = await supabase.auth.getUser();
-
-      if (error) {
-        console.error("Error fetching user:", error);
-      } else {
-        setUser(user);
-      }
-    };
-
-    fetchUser();
-  }, [supabase]);
 
   const handleImageLoad = () => {
     setIsImageLoading(false);
@@ -70,10 +50,8 @@ const UserStatusCard = (props: UserStatusCardProps) => {
         >
           {/* Left section for name */}
           <div className="flex flex-1 items-center justify-start">
-            <p className="font-bold truncate w-[150px]" title={props.name}>
-              {props.name.length > 20
-                ? `${props.name.slice(0, 20)}...`
-                : props.name}
+            <p className="font-bold truncate w-[150px]" title={user.role}>
+              {user.role}
             </p>
           </div>
 
@@ -81,21 +59,19 @@ const UserStatusCard = (props: UserStatusCardProps) => {
           <div className="flex flex-1 items-center justify-center">
             <CardDescription
               className="text-sm truncate w-[200px]"
-              title={props.email}
+              title={user.proposed_role}
             >
-              {props.email.length > 20
-                ? `${props.email.slice(0, 20)}...`
-                : props.email}
+              {user.proposed_role}
             </CardDescription>
           </div>
 
           {/* Right section for avatar */}
           <div className="flex flex-1 items-center justify-end">
             <Avatar className="cursor-pointer w-10 h-10">
-              {user?.user_metadata?.avatar_url ? (
+              {user.image_name ? (
                 <AvatarImage
-                  src={user.user_metadata.avatar_url}
-                  alt="User Avatar"
+                  src={`${user.image_name}`} // Update with the correct path logic
+                  alt={`${user.role} Avatar`}
                   className="w-full h-full rounded-full"
                 />
               ) : (
@@ -122,7 +98,7 @@ const UserStatusCard = (props: UserStatusCardProps) => {
             </DialogTrigger>
             <DialogContent className="sm:max-w-[800px] lg:max-w-[1000px] flex flex-col p-4">
               <DialogHeader>
-                <DialogTitle>File Name</DialogTitle>
+                <DialogTitle>{user.image_name}</DialogTitle>
                 <DialogDescription>
                   User&apos;s proof of registration.
                 </DialogDescription>
@@ -132,14 +108,7 @@ const UserStatusCard = (props: UserStatusCardProps) => {
                   {isImageLoading && (
                     <Skeleton className="absolute inset-0 w-full h-full" />
                   )}
-                  <Image
-                    src="https://static.wikia.nocookie.net/shipoffools/images/a/ab/Dreamybull.jpg/revision/latest/scale-to-width-down/1000?cb=20231123085934"
-                    alt="Proof of Registration"
-                    fill
-                    style={{ objectFit: "cover" }}
-                    className="rounded-md"
-                    onLoadingComplete={handleImageLoad}
-                  />
+                  {/* Place image here <Image /> */}
                 </div>
               </div>
             </DialogContent>

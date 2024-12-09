@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -9,94 +9,48 @@ import {
   CardTitle,
 } from "../../components/ui/card";
 import { ScrollArea } from "../../components/ui/scroll-area";
-// import UserStatusCard from "../../components/dashboard/admin/user-status-card";
+import UserStatusCard from "../../components/dashboard/admin/user-status-card"; // Uncomment this
 import { Button } from "../../components/ui/button";
 import { handleFetchIdentification } from "../../database-methods/crud-identification/handle-fetch-identification";
 
+export type UserRegistration = {
+  id: string;
+  role: string;
+  verified: boolean;
+  submitted_at: Date;
+  image_name: string;
+  proposed_role: string;
+};
+
 const Admin = () => {
-  /*  const users = [
-    {
-      id: 1,
-      name: "Romnoel Edralin Petracorta",
-      email: "romnoel.petracorta@neu.edu.ph",
-    },
-    {
-      id: 2,
-      name: "Richmon Baltazar",
-      email: "richmond.baltazar@neu.edu.ph",
-    },
-    {
-      id: 3,
-      name: "Kebs SideQuest Master",
-      email: "kevin.lisboa@neu.edu.ph",
-    },
-    {
-      id: 4,
-      name: "Rommoniga",
-      email: "romnoel.petracorta@neu.edu.ph",
-    },
-    {
-      id: 5,
-      name: "Titsy Die",
-      email: "richmond.baltazar@neu.edu.ph",
-    },
-    {
-      id: 6,
-      name: "Kebs SideQuest Master",
-      email: "kevin.lisboa@neu.edu.ph",
-    },
-    {
-      id: 7,
-      name: "Rommoniga",
-      email: "romnoel.petracorta@neu.edu.ph",
-    },
-    {
-      id: 8,
-      name: "Titsy Die",
-      email: "richmond.baltazar@neu.edu.ph",
-    },
-    {
-      id: 9,
-      name: "Kebs SideQuest Master",
-      email: "kevin.lisboa@neu.edu.ph",
-    },
-    {
-      id: 10,
-      name: "Rommoniga",
-      email: "romnoel.petracorta@neu.edu.ph",
-    },
-    {
-      id: 11,
-      name: "Titsy Die",
-      email: "richmond.baltazar@neu.edu.ph",
-    },
-    {
-      id: 12,
-      name: "Kebs SideQuest Master",
-      email: "kevin.lisboa@neu.edu.ph",
-    },
-    {
-      id: 13,
-      name: "Rommoniga",
-      email: "romnoel.petracorta@neu.edu.ph",
-    },
-    {
-      id: 14,
-      name: "Titsy Die",
-      email: "richmond.baltazar@neu.edu.ph",
-    },
-    {
-      id: 15,
-      name: "Kebs SideQuest Master",
-      email: "kevin.lisboa@neu.edu.ph",
-    },
-  ];
- */
+  const [students, setStudents] = useState<UserRegistration[]>([]);
+  const [librarians, setLibrarians] = useState<UserRegistration[]>([]);
+
   useEffect(() => {
-    const fetchIdentifications = async () => await handleFetchIdentification();
+    const fetchIdentifications = async () => {
+      const { data, error } = await handleFetchIdentification();
+
+      if (error) {
+        console.error("Error fetching identifications:", error);
+        return;
+      }
+
+      if (data) {
+        const studentList = data.filter(
+          (user: UserRegistration) => user.proposed_role === "student"
+        );
+        const librarianList = data.filter(
+          (user: UserRegistration) => user.proposed_role === "librarian"
+        );
+
+        setStudents(studentList);
+        setLibrarians(librarianList);
+      }
+    };
 
     fetchIdentifications();
-  });
+  }, []);
+
   return (
     <div className="flex w-full h-screen p-4 gap-4 overflow-hidden">
       <Card className="w-full h-full flex flex-col">
@@ -112,6 +66,7 @@ const Admin = () => {
           </CardDescription>
         </CardHeader>
         <CardContent className="flex gap-4 h-full overflow-hidden">
+          {/* Students Section */}
           <div className="flex-1 h-full overflow-hidden">
             <Card className="w-full h-full flex flex-col">
               <CardHeader>
@@ -122,17 +77,15 @@ const Admin = () => {
               </CardHeader>
               <CardContent className="flex-1 h-full overflow-hidden">
                 <ScrollArea className="h-full">
-                  {/* {users.map((student) => (
-                    <UserStatusCard
-                      key={student.id}
-                      name={student.name}
-                      email={student.email}
-                    />
-                  ))} */}
+                  {students.map((student) => (
+                    <UserStatusCard key={student.id} user={student} />
+                  ))}
                 </ScrollArea>
               </CardContent>
             </Card>
           </div>
+
+          {/* Librarians Section */}
           <div className="flex-1 h-full overflow-hidden">
             <Card className="w-full h-full flex flex-col">
               <CardHeader>
@@ -143,13 +96,9 @@ const Admin = () => {
               </CardHeader>
               <CardContent className="flex-1 h-full overflow-hidden">
                 <ScrollArea className="h-full">
-                  {/*   {users.map((librarian) => (
-                    <UserStatusCard
-                      key={librarian.id}
-                      name={librarian.name}
-                      email={librarian.email}
-                    />
-                  ))} */}
+                  {librarians.map((librarian) => (
+                    <UserStatusCard key={librarian.id} user={librarian} />
+                  ))}
                 </ScrollArea>
               </CardContent>
             </Card>
