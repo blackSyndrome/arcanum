@@ -19,7 +19,7 @@ import {
 } from "../../ui/dialog";
 import { LiteratureCardProps } from "../../../types/literature-card";
 
-const LiteratureCard = ({
+const StudentLiteratureCard = ({
   author,
   title,
   publishDate,
@@ -83,4 +83,4 @@ const LiteratureCard = ({
   );
 };
 
-export default LiteratureCard;
+export default StudentLiteratureCard;

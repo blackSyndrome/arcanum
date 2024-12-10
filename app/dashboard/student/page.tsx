@@ -9,7 +9,6 @@ import {
 import LiteratureCard from "../../../components/dashboard/student/literature-card";
 import { ScrollArea } from "../../../components/ui/scroll-area";
 
-// Sample data for literature
 const literatureData = [
   {
     author: "George Orwell",

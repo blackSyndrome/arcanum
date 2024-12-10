@@ -22,9 +22,6 @@ import {
 import { Input } from "../../../components/ui/input";
 import { Label } from "../../../components/ui/label";
 import { Textarea } from "../../../components/ui/textarea";
-import { CalendarIcon } from "lucide-react";
-import { Popover } from "../../../components/ui/popover";
-import { Calendar } from "../../../components/ui/calendar";
 import { DatePicker } from "../../../components/dashboard/librarian/date-picker";
 
 const literatureData = [

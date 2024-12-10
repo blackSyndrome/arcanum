@@ -1,4 +1,4 @@
-import DashboardFooter from "../../components/dashboard/Footer";
+import DashboardFooter from "../../components/dashboard/footer";
 import NavigationBar from "../../components/dashboard/navigation-bar";
 import { Input } from "../../components/ui/input";
 import React from "react";
