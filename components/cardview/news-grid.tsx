@@ -8,14 +8,14 @@ interface NewsCardProps {
 const NewsCard: React.FC<NewsCardProps> = ({ title, description }) => {
   return (
     <div
-      className="w-80 bg-white rounded-lg shadow-lg p-10 flex flex-col justify-between"
+      className="w-100 bg-white rounded-lg shadow-lg p-10 flex flex-col justify-between"
       style={{ backgroundColor: "#FFFFFF", height: "100%" }}
     >
       <h3 className="text-2xl font-semibold mb-3 text-center">{title}</h3>
       <p className="text-base leading-relaxed" style={{ color: "#64748B" }}>
         {description}
       </p>
-      <div className="flex justify-center mt-auto">
+      <div className="flex justify-center mt-5">
         <Button variant="outline">Read More</Button>
       </div>
     </div>

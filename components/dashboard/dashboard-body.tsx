@@ -7,9 +7,8 @@ const DashboardBody = () => {
   return (
     <div
       className="flex flex-col items-center bg-[#F8FAFC] py-10 px-4"
-      style={{ minHeight: "100vh" }} 
+      style={{ minHeight: "100vh" }}
     >
-   
       <div className="text-center mb-10 max-w-5xl">
         <h2 className="text-4xl font-extrabold text-[#27374D] mb-4">
           Explore Learning Virtually
@@ -24,17 +23,16 @@ const DashboardBody = () => {
         </p>
       </div>
 
-      
       <div className="w-full mb-12">
         <CardView />
       </div>
 
-      
       <div className="text-center mb-8 max-w-5xl">
-        <h2 className="text-4xl font-extrabold text-[#27374D]">News and Events</h2>
+        <h2 className="text-4xl font-extrabold text-[#27374D]">
+          News and Events
+        </h2>
       </div>
 
-     
       <div className="flex flex-wrap justify-center gap-8 w-full max-w-7xl">
         <div className="w-full md:w-1/2 lg:w-2/5 max-w-[600px]">
           <Image
@@ -50,7 +48,6 @@ const DashboardBody = () => {
         </div>
       </div>
 
-     
       <div className="flex flex-wrap justify-center gap-8 w-full max-w-7xl mt-8">
         <div className="w-full md:w-1/2 lg:w-2/5 max-w-[600px]">
           <NewsGrid />
@@ -68,8 +65,5 @@ const DashboardBody = () => {
     </div>
   );
 };
-
-
-
 
 export default DashboardBody;
