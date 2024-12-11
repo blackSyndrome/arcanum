@@ -13,11 +13,13 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { Button } from "../ui/button";
-import { User, LogOut } from "lucide-react"; 
+import { User, LogOut } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const NavigationBar = () => {
   const supabase = createClient();
   const [user, setUser] = useState<any>();
+  const router = useRouter();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -73,9 +75,10 @@ const NavigationBar = () => {
                 variant={"ghost"}
                 onClick={async () => {
                   await supabase.auth.signOut();
-                  // Add any additional logout handling here
+                  router.push("/");
+                  console.log("User signed out");
                 }}
-                className=" w-full text-black flex justify-start  bg-transparent hover:bg-transparent"
+                className=" w-full text-black flex justify-start p-0  bg-transparent hover:bg-transparent"
               >
                 <LogOut className="mr-2" /> {/* Icon for Logout */}
                 Logout
