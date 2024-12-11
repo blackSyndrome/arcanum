@@ -3,14 +3,6 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
 import { createClient } from "../../utils/supabase/client";
-import {
-  NavigationMenuItem,
-  NavigationMenu,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  NavigationMenuContent,
-} from "../ui/navigation-menu";
 import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import Link from "next/link";

@@ -21,7 +21,13 @@ import { Avatar, AvatarImage } from "../../../components/ui/avatar";
 import { UserRegistration } from "../../../types/user-registration";
 
 type UserStatusCardProps = {
-  user: UserRegistration;
+  user: {
+    id: string;
+    name: string;
+    proposedRole: string;
+    image_name: string;
+    role: string;
+  };
 };
 
 const UserStatusCard = ({ user }: UserStatusCardProps) => {
@@ -50,8 +56,8 @@ const UserStatusCard = ({ user }: UserStatusCardProps) => {
         >
           {/* Left section for name */}
           <div className="flex flex-1 items-center justify-start">
-            <p className="font-bold truncate w-[150px]" title={user.role}>
-              {user.role}
+            <p className="font-bold truncate w-[150px]" title={user.name}>
+              {user.name}
             </p>
           </div>
 
@@ -59,9 +65,9 @@ const UserStatusCard = ({ user }: UserStatusCardProps) => {
           <div className="flex flex-1 items-center justify-center">
             <CardDescription
               className="text-sm truncate w-[200px]"
-              title={user.proposed_role}
+              title={user.proposedRole}
             >
-              {user.proposed_role}
+              {user.proposedRole}
             </CardDescription>
           </div>
 
@@ -109,7 +115,7 @@ const UserStatusCard = ({ user }: UserStatusCardProps) => {
                     <Skeleton className="absolute inset-0 w-full h-full" />
                   )}
                   <Image
-                    src={`${user.image_name}`}
+                    src={"/test-image.png"}
                     alt="Proof of Registration"
                     fill
                     style={{ objectFit: "cover" }}

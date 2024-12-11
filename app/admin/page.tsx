@@ -112,8 +112,100 @@ const Admin = () => {
     },
   ];
 
-  const [students, setStudents] = useState<UserRegistration[]>([]);
-  const [librarians, setLibrarians] = useState<UserRegistration[]>([]);
+  const mockStudentData = [
+    {
+      id: "1",
+      name: "Kevin Ros Lisboa",
+      proposedRole: "student",
+      image_name: "test_image.jpg",
+      role: "student",
+    },
+    {
+      id: "2",
+      name: "Richmond Baltazar",
+      proposedRole: "student",
+      image_name: "test_image.jpg",
+      role: "student",
+    },
+    {
+      id: "3",
+      name: "Romnoel Edralin Petracorta",
+      proposedRole: "student",
+      image_name: "test_image.jpg",
+      role: "student",
+    },
+    {
+      id: "4",
+      name: "Erlyn De Leon",
+      proposedRole: "student",
+      image_name: "test_image.jpg",
+      role: "student",
+    },
+    {
+      id: "5",
+      name: "Lyrine Poliarco",
+      proposedRole: "student",
+      image_name: "test_image.jpg",
+      role: "student",
+    },
+  ];
+
+  const mockLibrarianData = [
+    {
+      id: "1",
+      name: "Jeremias Esperanza",
+      proposedRole: "librarian",
+      image_name: "test_image.jpg",
+      role: "librarian",
+    },
+    {
+      id: "2",
+      name: "Irish Paulo Tipay",
+      proposedRole: "librarian",
+      image_name: "test_image.jpg",
+      role: "librarian",
+    },
+    {
+      id: "3",
+      name: "Corazon Quintana",
+      proposedRole: "librarian",
+      image_name: "test_image.jpg",
+      role: "librarian",
+    },
+    {
+      id: "4",
+      name: "Mary Jane Lima",
+      proposedRole: "librarian",
+      image_name: "test_image.jpg",
+      role: "librarian",
+    },
+    {
+      id: "5",
+      name: "Yuumi Pasiol Manalo",
+      proposedRole: "librarian",
+      image_name: "test_image.jpg",
+      role: "librarian",
+    },
+  ];
+
+  const [students, setStudents] = useState<
+    {
+      id: string;
+      name: string;
+      proposedRole: string;
+      image_name: string;
+      role: string;
+    }[]
+  >([]);
+  const [librarians, setLibrarians] = useState<
+    {
+      id: string;
+      name: string;
+      proposedRole: string;
+      image_name: string;
+      role: string;
+    }[]
+  >([]);
   const [selectedView, setSelectedView] = useState("admin");
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -214,7 +306,7 @@ const Admin = () => {
                   </CardHeader>
                   <CardContent className="flex-1 h-full overflow-hidden">
                     <ScrollArea className="h-full">
-                      {students.map((student) => (
+                      {mockStudentData.map((student) => (
                         <UserStatusCard key={student.id} user={student} />
                       ))}
                     </ScrollArea>
@@ -231,7 +323,7 @@ const Admin = () => {
                   </CardHeader>
                   <CardContent className="flex-1 h-full overflow-hidden">
                     <ScrollArea className="h-full">
-                      {librarians.map((librarian) => (
+                      {mockLibrarianData.map((librarian) => (
                         <UserStatusCard key={librarian.id} user={librarian} />
                       ))}
                     </ScrollArea>
