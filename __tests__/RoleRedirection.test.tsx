@@ -1,7 +1,7 @@
 import { handleUserStatus } from '../database-methods/user-status/handleUserStatus'; 
 import { createClient } from '../utils/supabase/client'; 
 
-// Mock the entire supabase client module
+
 jest.mock('../utils/supabase/client', () => ({
   createClient: jest.fn(),
 }));
@@ -24,9 +24,9 @@ describe("User Redirection Logic", () => {
         }),
       },
       schema: () => ({
-        from: jest.fn().mockReturnThis(), // Mock `from` to allow chaining
-        select: jest.fn().mockReturnThis(), // Mock `select` to allow chaining
-        eq: jest.fn().mockResolvedValue(statusResponse), // Mock `eq` to return statusResponse
+        from: jest.fn().mockReturnThis(), 
+        select: jest.fn().mockReturnThis(),
+        eq: jest.fn().mockResolvedValue(statusResponse),
       }),
     });
   };
