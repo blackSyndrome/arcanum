@@ -21,7 +21,7 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { Button } from "../ui/button";
-import { Home, BookOpen, Search, HelpCircle, User, LogOut } from "lucide-react"; // Import Lucide icons
+import { User, LogOut } from "lucide-react"; 
 
 const NavigationBar = () => {
   const supabase = createClient();
@@ -44,32 +44,6 @@ const NavigationBar = () => {
     fetchUser();
   }, [supabase]);
 
-  const resources = [
-    {
-      title: "Journals",
-      href: "/resources/journals",
-      icon: <BookOpen className="mr-2" />,
-    },
-    {
-      title: "Theses",
-      href: "/resources/theses",
-      icon: <BookOpen className="mr-2" />,
-    },
-  ];
-
-  const helpOptions = [
-    {
-      title: "Request",
-      href: "/help/request",
-      icon: <HelpCircle className="mr-2" />,
-    },
-    {
-      title: "About",
-      href: "/help/about",
-      icon: <HelpCircle className="mr-2" />,
-    },
-  ];
-
   return (
     <div className="bg-zinc-900 w-full flex items-center h-full justify-between px-12 py-4">
       <div className="flex items-center gap-4">
@@ -84,96 +58,6 @@ const NavigationBar = () => {
       </div>
 
       <div className="flex items-center gap-8">
-        {/* Navigation links */}
-        <div className="flex text-white">
-          <NavigationMenu>
-            <NavigationMenuList>
-              <NavigationMenuItem>
-                <Link href="/docs" legacyBehavior passHref>
-                  <NavigationMenuLink className="bg-transparent flex items-center">
-                    <Home className="mr-2" /> {/* Icon for Home */}
-                    <h1 className="text-lg">Home</h1>
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
-        </div>
-
-        {/* Resources dropdown */}
-        <div className="flex text-white">
-          <NavigationMenu>
-            <NavigationMenuList>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent text-lg flex items-center">
-                  <BookOpen className="mr-2" /> {/* Icon for Resources */}
-                  Resources
-                </NavigationMenuTrigger>
-                <NavigationMenuContent className="w-64 p-4 bg-white rounded-md">
-                  <ul className="flex flex-col gap-2">
-                    {resources.map((resource) => (
-                      <li key={resource.title}>
-                        <NavigationMenuLink
-                          className="text-lg flex items-center"
-                          href={resource.href}
-                        >
-                          {resource.icon} {/* Icon */}
-                          {resource.title}
-                        </NavigationMenuLink>
-                      </li>
-                    ))}
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
-        </div>
-
-        {/* Search link */}
-        <div className="flex text-white">
-          <NavigationMenu>
-            <NavigationMenuList>
-              <NavigationMenuItem>
-                <Link href="/dashboard" legacyBehavior passHref>
-                  <NavigationMenuLink className="bg-transparent flex items-center">
-                    <Search className="mr-2" /> {/* Icon for Search */}
-                    <h1 className="text-lg">Search</h1>
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
-        </div>
-
-        {/* Help dropdown */}
-        <div className="flex text-white">
-          <NavigationMenu>
-            <NavigationMenuList>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent text-lg flex items-center">
-                  <HelpCircle className="mr-2" /> {/* Icon for Help */}
-                  Help
-                </NavigationMenuTrigger>
-                <NavigationMenuContent className="w-64 p-4 bg-white rounded-md">
-                  <ul className="flex flex-col gap-2">
-                    {helpOptions.map((option) => (
-                      <li key={option.title}>
-                        <NavigationMenuLink
-                          className="text-lg flex items-center"
-                          href={option.href}
-                        >
-                          {option.icon} {/* Icon */}
-                          {option.title}
-                        </NavigationMenuLink>
-                      </li>
-                    ))}
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
-        </div>
-
         {/* Avatar with dropdown menu */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
